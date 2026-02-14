@@ -1,46 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Toolkit | About</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Toolkit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background-color: #f7fafc;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 20px 30px;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #edf2f7;
+            color: #667eea;
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        section:nth-child(even) {
+            background-color: white;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #1a202c;
+            text-align: center;
+        }
+
+        section h3 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: #2d3748;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:nth-child(even) .activity-card {
+            background: #f7fafc;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .activity-card h4 {
+            font-size: 1.4rem;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .activity-meta {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .activity-card ol, .activity-card ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .activity-card li {
+            margin-bottom: 8px;
+        }
+
+        .resource-list {
+            max-width: 700px;
+            margin: 30px auto;
+        }
+
+        .resource-list a {
+            display: block;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            background: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        section:nth-child(even) .resource-list a {
+            background: #f7fafc;
+        }
+
+        .resource-list a:hover {
+            background-color: #667eea;
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .why-works {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #edf2f7;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .why-works p {
+            margin-bottom: 15px;
+        }
+
+        .why-works strong {
+            color: #667eea;
+        }
+
+        footer {
+            background-color: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            nav a {
+                padding: 15px 20px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Creative Toolkit</h1>
+        <p>Quick creative boosts for real classrooms</p>
+    </header>
 
-<aside>
-    <h2>Creative Toolkit</h2>
-    <a href="index.html">About</a>
-    <a href="teachers.html">Teacher Guide</a>
-    <a href="activities.html">Classroom Activities</a>
-    <a href="highschool.html">High School Challenges</a>
-    <a href="resources.html">Creative Resources</a>
-</aside>
-<aside>
-    <h2>Creative Toolkit</h2>
-    <a href="index.html">About</a>
-    <a href="teachers.html">Teacher Guide</a>
-    <a href="activities.html">Classroom Activities</a>
-    <a href="highschool.html">High School Challenges</a>
-    <a href="resources.html">Creative Resources</a>
-</aside>
-    
-<main>
-<header>
-    <h1>Creative Toolkit</h1>
-    <p>Practical ways to build creativity into everyday learning</p>
-</header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#students">For Students</a></li>
+            <li><a href="#teachers">For Teachers</a></li>
+            <li><a href="#why">Why It Works</a></li>
+        </ul>
+    </nav>
 
-<section class="section">
-    <div class="intro-box">
-        <p>Creative thinking plays a major role in problem-solving, communication, and long-term adaptability. Many students have fewer chances to use those skills during the school day. This toolkit provides short, flexible activities that support creative growth within existing classes and routines.</p>
-    </div>
-</section>
+    <section id="home">
+        <div class="container">
+            <div class="intro-text">
+                <p>Student creativity has been declining for years. Standardized testing, rigid schedules, and budget cuts have squeezed out the space for creative thinking. But creativity isn't just for art class—it's a skill that applies to every subject and every career.</p>
+                
+                <p>This toolkit offers short, low-cost activities that fit into existing classes. No new curriculum. No extra budget. Just small moments that give students permission to think differently.</p>
+                
+                <p>Whether you're a teacher looking for quick classroom activities or a student wanting to explore creativity on your own, these tools are built to be practical and pressure-free.</p>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    Created as part of a student civic engagement project
-</footer>
-</main>
+    <section id="students">
+        <div class="container">
+            <h2>For Students</h2>
+            <div class="intro-text">
+                <p>You don't need permission to be creative. These activities take 5-15 minutes and require nothing more than what's already around you. Pick one, try it, and see where it takes you.</p>
+            </div>
 
+            <div class="activity-grid">
+                <div class="activity-card">
+                    <h4>Six-Word Story</h4>
+                    <p class="activity-meta">⏱ 5 minutes</p>
+                    <ol>
+                        <li>Pick any topic, memory, or feeling</li>
+                        <li>Write a complete story in exactly six words</li>
+                        <li>Read it aloud to yourself</li>
+                        <li>Try three different versions</li>
+                    </ol>
+                </div>
+
+                <div class="activity-card">
+                    <h4>Random Object Redesign</h4>
+                    <p class="activity-meta">⏱ 10 minutes</p>
+                    <ol>
+                        <li>Grab any object near you (pen, phone, cup)</li>
+                        <li>Sketch it as it is now</li>
+                        <li>Redesign it for a completely different purpose</li>
+                        <li>Draw your new version</li>
+                        <li>Write one sentence explaining the change</li>
+                    </ol>
+                </div>
+
+                <div class="activity-card">
+                    <h4>Sound Mapping</h4>
+                    <p class="activity-meta">⏱ 8 minutes</p>
+                    <ol>
+                        <li>Close your eyes and listen for two minutes</li>
+                        <li>Draw a map of every sound you hear</li>
+                        <li>Use shapes, lines, or colors to represent each sound</li>
+                        <li>Label three sounds you usually ignore</li>
+                    </ol>
+                </div>
+
+                <div class="activity-card">
+                    <h4>Constraint Challenge</h4>
+                    <p class="activity-meta">⏱ 12 minutes</p>
+                    <ol>
+                        <li>Choose a creative task (poem, drawing, song idea)</li>
+                        <li>Add a weird constraint (only use three colors, no letter "e", must rhyme with "blue")</li>
+                        <li>Create something within that limit</li>
+                        <li>Reflect on how the constraint changed your process</li>
+                    </ol>
+                </div>
+
+                <div class="activity-card">
+                    <h4>Perspective Flip</h4>
+                    <p class="activity-meta">⏱ 10 minutes</p>
+                    <ol>
+                        <li>Think of something familiar (your school, your neighborhood)</li>
+                        <li>Describe it from the perspective of an animal, alien, or time traveler</li>
+                        <li>Write 5-7 sentences in that voice</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h3>Free Creative Resources</h3>
+            <div class="resource-list">
+                <a href="https://www.metmuseum.org/art/collection" target="_blank">Metropolitan Museum of Art — 400,000+ public domain artworks</a>
+                <a href="https://www.reedsy.com/prompts" target="_blank">Reedsy Prompts — Daily creative writing challenges</a>
+                <a href="https://beepbox.co" target="_blank">BeepBox — Free browser-based music creation tool</a>
+                <a href="https://www.nga.gov/open-access-images.html" target="_blank">National Gallery of Art — Open access image collection</a>
+                <a href="https://www.figma.com" target="_blank">Figma — Free design and prototyping tool</a>
+                <a href="https://www.khanacademy.org/computing/pixar" target="_blank">Khan Academy × Pixar — Free courses on creative storytelling</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="teachers">
+        <div class="container">
+            <h2>For Teachers</h2>
+            <div class="intro-text">
+                <p>Creativity in schools has dropped steadily over the past few decades. Students spend less time exploring open-ended problems and more time filling in bubbles. But creativity isn't extra—it's essential. It builds problem-solving, critical thinking, and resilience.</p>
+                
+                <p>These activities aren't meant to replace your curriculum. They're designed to fit into it. They take 5-15 minutes, require no budget, and work across subjects. Use them as warm-ups, transitions, or brain breaks.</p>
+            </div>
+
+            <h3>Creative Activities</h3>
+            <div class="activity-grid">
+                <div class="activity-card">
+                    <h4>One-Minute Sketch</h4>
+                    <p class="activity-meta">📚 Any subject | ⏱ 5 minutes</p>
+                    <p>Students visualize a concept from the lesson (photosynthesis, a math problem, a historical event) and sketch it in 60 seconds, then explain their choices to a partner.</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4>Question Chain</h4>
+                    <p class="activity-meta">📚 Science, Social Studies, English | ⏱ 8 minutes</p>
+                    <p>Start with a topic from your lesson and have students generate five questions about it, with each question building on the previous one.</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4>Reverse Engineering</h4>
+                    <p class="activity-meta">📚 Math, Science, History | ⏱ 10 minutes</p>
+                    <p>Give students the answer or outcome and ask them to work backwards to figure out the question, process, or context that led to it.</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4>Three-Word Summary</h4>
+                    <p class="activity-meta">📚 Any subject | ⏱ 5 minutes</p>
+                    <p>After a lesson or reading, students distill the main idea into exactly three words, then share and compare with classmates.</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4>Metaphor Translation</h4>
+                    <p class="activity-meta">📚 Science, Math, English | ⏱ 12 minutes</p>
+                    <p>Students explain a concept from class using a metaphor from a completely unrelated domain (explain photosynthesis as a city, describe a math equation as a recipe).</p>
+                </div>
+            </div>
+
+            <h3>Why This Works</h3>
+            <div class="why-works">
+                <p><strong>Feasibility:</strong> Each activity takes 5-15 minutes. No lesson plans to rewrite. No supplies to buy. They fit into existing class time as warm-ups, transitions, or reflections.</p>
+                
+                <p><strong>Equity:</strong> These activities require nothing more than paper and a pen. Every student can participate regardless of resources at home or school budget constraints.</p>
+                
+                <p><strong>Integration:</strong> Creativity isn't separate from content. These activities reinforce what you're already teaching while building divergent thinking, problem-solving, and student voice.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="container">
+            <h2>Why It Works</h2>
+            <div class="intro-text">
+                <p>Creativity isn't about adding more to an already packed schedule. It's about making space for students to think differently within the time you already have. These activities are designed to be embedded, not extra.</p>
+                
+                <p>They work because they're short, accessible, and tied to real learning. No special training. No expensive materials. Just small opportunities for students to explore ideas in ways that standardized tests don't reward but real life does.</p>
+                
+                <p>When students practice creative thinking regularly—even in small doses—they build flexibility, curiosity, and confidence. Those skills transfer to every subject and every challenge they'll face.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Created as part of a student civic engagement project.</p>
+    </footer>
 </body>
 </html>
