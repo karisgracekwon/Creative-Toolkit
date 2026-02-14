@@ -23,33 +23,54 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
+        /* Header Styles */
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 80px 20px 60px;
+            padding: 100px 20px 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
         }
 
         header p {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 300;
             opacity: 0.95;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Navigation Styles */
         nav {
             background-color: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -69,168 +90,411 @@
 
         nav a {
             display: block;
-            padding: 20px 30px;
+            padding: 24px 35px;
             text-decoration: none;
             color: #4a5568;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
         }
 
         nav a:hover {
-            background-color: #edf2f7;
+            background-color: #f7fafc;
             color: #667eea;
+            border-bottom-color: #667eea;
         }
 
+        /* Page Container */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Section Styles */
         section {
-            padding: 60px 20px;
-        }
-
-        section:nth-child(even) {
-            background-color: white;
+            padding: 80px 20px;
+            min-height: calc(100vh - 200px);
         }
 
         section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+            font-size: 3rem;
+            margin-bottom: 20px;
             color: #1a202c;
             text-align: center;
+            font-weight: 700;
         }
 
-        section h3 {
-            font-size: 1.8rem;
-            margin: 40px 0 20px;
-            color: #2d3748;
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 700px;
+            margin: 0 auto 50px;
         }
 
-        .intro-text {
-            max-width: 800px;
-            margin: 0 auto 40px;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        /* Home Page Styles */
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .intro-text p {
-            margin-bottom: 20px;
-        }
-
-        .activity-grid {
+        .stat-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
         }
 
-        .activity-card {
+        .stat-card {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        section:nth-child(even) .activity-card {
-            background: #f7fafc;
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
         }
 
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
         }
 
-        .activity-card h4 {
-            font-size: 1.4rem;
+        .stat-card h3 {
+            font-size: 1.8rem;
             color: #667eea;
             margin-bottom: 10px;
         }
 
-        .activity-meta {
-            color: #718096;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            font-weight: 500;
+        .stat-card p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.6;
         }
 
-        .activity-card ol, .activity-card ul {
+        .intro-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border-left: 6px solid #667eea;
+        }
+
+        .intro-box p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+
+        /* Student Page Styles */
+        .intro-banner {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .intro-banner p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #667eea;
+        }
+
+        .activity-card:nth-child(2) {
+            border-top-color: #f093fb;
+        }
+
+        .activity-card:nth-child(3) {
+            border-top-color: #4facfe;
+        }
+
+        .activity-card:nth-child(4) {
+            border-top-color: #43e97b;
+        }
+
+        .activity-card:nth-child(5) {
+            border-top-color: #fa709a;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-card h4 {
+            font-size: 1.6rem;
+            color: #1a202c;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .activity-meta {
+            color: #718096;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .activity-card ol {
             margin-left: 20px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .activity-card li {
-            margin-bottom: 8px;
-        }
-
-        .resource-list {
-            max-width: 700px;
-            margin: 30px auto;
-        }
-
-        .resource-list a {
-            display: block;
-            padding: 15px 20px;
             margin-bottom: 12px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Resource Section */
+        .resource-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin-top: 80px;
+        }
+
+        .resource-section h3 {
+            font-size: 2.2rem;
+            color: #1a202c;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .resource-link {
+            display: block;
+            padding: 25px 30px;
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             text-decoration: none;
-            color: #667eea;
-            font-weight: 500;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
         }
 
-        section:nth-child(even) .resource-list a {
-            background: #f7fafc;
-        }
-
-        .resource-list a:hover {
+        .resource-link:hover {
             background-color: #667eea;
             color: white;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            transform: translateX(5px);
         }
 
-        .why-works {
-            max-width: 800px;
-            margin: 30px auto;
-            background: #edf2f7;
-            padding: 30px;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
+        /* Teacher Page Styles */
+        .teacher-intro {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 60px;
         }
 
-        .why-works p {
-            margin-bottom: 15px;
+        .teacher-intro p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
         }
 
-        .why-works strong {
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: scale(1.05);
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.5rem;
             color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
+        .benefit-card p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Why It Works Page */
+        .why-hero {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 60px 50px;
+            border-radius: 20px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .why-hero h3 {
+            font-size: 2.5rem;
+            color: #1a202c;
+            margin-bottom: 25px;
+        }
+
+        .why-hero p {
+            font-size: 1.25rem;
+            line-height: 1.9;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #2d3748;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .principle-card {
+            background: white;
+            padding: 45px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-top: 6px solid #667eea;
+        }
+
+        .principle-card:nth-child(2) {
+            border-top-color: #4facfe;
+        }
+
+        .principle-card:nth-child(3) {
+            border-top-color: #43e97b;
+        }
+
+        .principle-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .principle-card h4 {
+            font-size: 1.8rem;
+            color: #1a202c;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .principle-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        /* Footer */
         footer {
             background-color: #2d3748;
             color: white;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 40px;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 1.05rem;
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             header p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             nav a {
-                padding: 15px 20px;
+                padding: 18px 20px;
+                font-size: 0.95rem;
             }
 
             section h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
-            .activity-grid {
+            .intro-box {
+                padding: 30px;
+            }
+
+            .activity-grid,
+            .stat-cards,
+            .benefits-grid,
+            .principles-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .teacher-intro,
+            .intro-banner,
+            .why-hero {
+                padding: 30px 25px;
+            }
+
+            .resource-section {
+                padding: 40px 25px;
             }
         }
     </style>
@@ -243,169 +507,258 @@
 
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#students">For Students</a></li>
-            <li><a href="#teachers">For Teachers</a></li>
-            <li><a href="#why">Why It Works</a></li>
+            <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+            <li><a href="#" onclick="showPage('students'); return false;">For Students</a></li>
+            <li><a href="#" onclick="showPage('teachers'); return false;">For Teachers</a></li>
+            <li><a href="#" onclick="showPage('why'); return false;">Why It Works</a></li>
         </ul>
     </nav>
 
-    <section id="home">
-        <div class="container">
-            <div class="intro-text">
-                <p>Student creativity has been declining for years. Standardized testing, rigid schedules, and budget cuts have squeezed out the space for creative thinking. But creativity isn't just for art class—it's a skill that applies to every subject and every career.</p>
-                
-                <p>This toolkit offers short, low-cost activities that fit into existing classes. No new curriculum. No extra budget. Just small moments that give students permission to think differently.</p>
-                
-                <p>Whether you're a teacher looking for quick classroom activities or a student wanting to explore creativity on your own, these tools are built to be practical and pressure-free.</p>
-            </div>
-        </div>
-    </section>
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <section>
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Creativity belongs in every classroom</h2>
+                    <p class="section-subtitle">Not as an add-on, but as a way of thinking</p>
 
-    <section id="students">
-        <div class="container">
-            <h2>For Students</h2>
-            <div class="intro-text">
-                <p>You don't need permission to be creative. These activities take 5-15 minutes and require nothing more than what's already around you. Pick one, try it, and see where it takes you.</p>
-            </div>
+                    <div class="stat-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon">📉</div>
+                            <h3>The Problem</h3>
+                            <p>Student creativity has declined steadily as testing and rigid schedules take over</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⚡</div>
+                            <h3>The Solution</h3>
+                            <p>Short, embedded activities that fit into what you're already teaching</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <h3>The Result</h3>
+                            <p>Students build creative thinking without adding pressure to anyone's schedule</p>
+                        </div>
+                    </div>
 
-            <div class="activity-grid">
-                <div class="activity-card">
-                    <h4>Six-Word Story</h4>
-                    <p class="activity-meta">⏱ 5 minutes</p>
-                    <ol>
-                        <li>Pick any topic, memory, or feeling</li>
-                        <li>Write a complete story in exactly six words</li>
-                        <li>Read it aloud to yourself</li>
-                        <li>Try three different versions</li>
-                    </ol>
-                </div>
-
-                <div class="activity-card">
-                    <h4>Random Object Redesign</h4>
-                    <p class="activity-meta">⏱ 10 minutes</p>
-                    <ol>
-                        <li>Grab any object near you (pen, phone, cup)</li>
-                        <li>Sketch it as it is now</li>
-                        <li>Redesign it for a completely different purpose</li>
-                        <li>Draw your new version</li>
-                        <li>Write one sentence explaining the change</li>
-                    </ol>
-                </div>
-
-                <div class="activity-card">
-                    <h4>Sound Mapping</h4>
-                    <p class="activity-meta">⏱ 8 minutes</p>
-                    <ol>
-                        <li>Close your eyes and listen for two minutes</li>
-                        <li>Draw a map of every sound you hear</li>
-                        <li>Use shapes, lines, or colors to represent each sound</li>
-                        <li>Label three sounds you usually ignore</li>
-                    </ol>
-                </div>
-
-                <div class="activity-card">
-                    <h4>Constraint Challenge</h4>
-                    <p class="activity-meta">⏱ 12 minutes</p>
-                    <ol>
-                        <li>Choose a creative task (poem, drawing, song idea)</li>
-                        <li>Add a weird constraint (only use three colors, no letter "e", must rhyme with "blue")</li>
-                        <li>Create something within that limit</li>
-                        <li>Reflect on how the constraint changed your process</li>
-                    </ol>
-                </div>
-
-                <div class="activity-card">
-                    <h4>Perspective Flip</h4>
-                    <p class="activity-meta">⏱ 10 minutes</p>
-                    <ol>
-                        <li>Think of something familiar (your school, your neighborhood)</li>
-                        <li>Describe it from the perspective of an animal, alien, or time traveler</li>
-                        <li>Write 5-7 sentences in that voice</li>
-                    </ol>
+                    <div class="intro-box">
+                        <p>This toolkit offers practical, low-cost activities designed for real classrooms. No new curriculum. No budget required. Just small opportunities for creative thinking.</p>
+                        
+                        <p>Whether you're a teacher looking for quick classroom activities or a student wanting to explore creativity independently, these resources are built to be accessible and pressure-free.</p>
+                        
+                        <p>Creativity isn't separate from content—it enhances it. These activities reinforce learning while building problem-solving skills that matter beyond any test.</p>
+                    </div>
                 </div>
             </div>
+        </section>
+    </div>
 
-            <h3>Free Creative Resources</h3>
-            <div class="resource-list">
-                <a href="https://www.metmuseum.org/art/collection" target="_blank">Metropolitan Museum of Art — 400,000+ public domain artworks</a>
-                <a href="https://www.reedsy.com/prompts" target="_blank">Reedsy Prompts — Daily creative writing challenges</a>
-                <a href="https://beepbox.co" target="_blank">BeepBox — Free browser-based music creation tool</a>
-                <a href="https://www.nga.gov/open-access-images.html" target="_blank">National Gallery of Art — Open access image collection</a>
-                <a href="https://www.figma.com" target="_blank">Figma — Free design and prototyping tool</a>
-                <a href="https://www.khanacademy.org/computing/pixar" target="_blank">Khan Academy × Pixar — Free courses on creative storytelling</a>
-            </div>
-        </div>
-    </section>
+    <!-- STUDENTS PAGE -->
+    <div id="students" class="page">
+        <section>
+            <div class="container">
+                <h2>For Students</h2>
+                <p class="section-subtitle">You don't need permission to be creative</p>
 
-    <section id="teachers">
-        <div class="container">
-            <h2>For Teachers</h2>
-            <div class="intro-text">
-                <p>Creativity in schools has dropped steadily over the past few decades. Students spend less time exploring open-ended problems and more time filling in bubbles. But creativity isn't extra—it's essential. It builds problem-solving, critical thinking, and resilience.</p>
-                
-                <p>These activities aren't meant to replace your curriculum. They're designed to fit into it. They take 5-15 minutes, require no budget, and work across subjects. Use them as warm-ups, transitions, or brain breaks.</p>
-            </div>
-
-            <h3>Creative Activities</h3>
-            <div class="activity-grid">
-                <div class="activity-card">
-                    <h4>One-Minute Sketch</h4>
-                    <p class="activity-meta">📚 Any subject | ⏱ 5 minutes</p>
-                    <p>Students visualize a concept from the lesson (photosynthesis, a math problem, a historical event) and sketch it in 60 seconds, then explain their choices to a partner.</p>
+                <div class="intro-banner">
+                    <p>These activities take 5-15 minutes and require nothing more than what's already around you. Pick one, try it out, and see where it takes you. No grades, no judgment—just exploration.</p>
                 </div>
 
-                <div class="activity-card">
-                    <h4>Question Chain</h4>
-                    <p class="activity-meta">📚 Science, Social Studies, English | ⏱ 8 minutes</p>
-                    <p>Start with a topic from your lesson and have students generate five questions about it, with each question building on the previous one.</p>
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <h4>Six-Word Story</h4>
+                        <p class="activity-meta">⏱ 5 minutes</p>
+                        <ol>
+                            <li>Pick any topic, memory, or feeling</li>
+                            <li>Write a complete story in exactly six words</li>
+                            <li>Read it aloud to yourself</li>
+                            <li>Try three different versions</li>
+                        </ol>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4>Random Object Redesign</h4>
+                        <p class="activity-meta">⏱ 10 minutes</p>
+                        <ol>
+                            <li>Grab any object near you (pen, phone, cup)</li>
+                            <li>Sketch it as it is now</li>
+                            <li>Redesign it for a completely different purpose</li>
+                            <li>Draw your new version</li>
+                            <li>Write one sentence explaining the change</li>
+                        </ol>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4>Sound Mapping</h4>
+                        <p class="activity-meta">⏱ 8 minutes</p>
+                        <ol>
+                            <li>Close your eyes and listen for two minutes</li>
+                            <li>Draw a map of every sound you hear</li>
+                            <li>Use shapes, lines, or colors to represent each sound</li>
+                            <li>Label three sounds you usually ignore</li>
+                        </ol>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4>Constraint Challenge</h4>
+                        <p class="activity-meta">⏱ 12 minutes</p>
+                        <ol>
+                            <li>Choose a creative task (poem, drawing, song idea)</li>
+                            <li>Add a weird constraint (only use three colors, no letter "e", must rhyme with "blue")</li>
+                            <li>Create something within that limit</li>
+                            <li>Reflect on how the constraint changed your process</li>
+                        </ol>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4>Perspective Flip</h4>
+                        <p class="activity-meta">⏱ 10 minutes</p>
+                        <ol>
+                            <li>Think of something familiar (your school, your neighborhood)</li>
+                            <li>Describe it from the perspective of an animal, alien, or time traveler</li>
+                            <li>Write 5-7 sentences in that voice</li>
+                        </ol>
+                    </div>
                 </div>
 
-                <div class="activity-card">
-                    <h4>Reverse Engineering</h4>
-                    <p class="activity-meta">📚 Math, Science, History | ⏱ 10 minutes</p>
-                    <p>Give students the answer or outcome and ask them to work backwards to figure out the question, process, or context that led to it.</p>
-                </div>
-
-                <div class="activity-card">
-                    <h4>Three-Word Summary</h4>
-                    <p class="activity-meta">📚 Any subject | ⏱ 5 minutes</p>
-                    <p>After a lesson or reading, students distill the main idea into exactly three words, then share and compare with classmates.</p>
-                </div>
-
-                <div class="activity-card">
-                    <h4>Metaphor Translation</h4>
-                    <p class="activity-meta">📚 Science, Math, English | ⏱ 12 minutes</p>
-                    <p>Students explain a concept from class using a metaphor from a completely unrelated domain (explain photosynthesis as a city, describe a math equation as a recipe).</p>
+                <div class="resource-section">
+                    <h3>Free Creative Resources</h3>
+                    <div class="resource-grid">
+                        <a href="https://www.metmuseum.org/art/collection" target="_blank" class="resource-link">Metropolitan Museum of Art — 400,000+ public domain artworks</a>
+                        <a href="https://www.reedsy.com/prompts" target="_blank" class="resource-link">Reedsy Prompts — Daily creative writing challenges</a>
+                        <a href="https://beepbox.co" target="_blank" class="resource-link">BeepBox — Free browser-based music creation tool</a>
+                        <a href="https://www.nga.gov/open-access-images.html" target="_blank" class="resource-link">National Gallery of Art — Open access image collection</a>
+                        <a href="https://www.figma.com" target="_blank" class="resource-link">Figma — Free design and prototyping tool</a>
+                        <a href="https://www.khanacademy.org/computing/pixar" target="_blank" class="resource-link">Khan Academy × Pixar — Free courses on creative storytelling</a>
+                    </div>
                 </div>
             </div>
+        </section>
+    </div>
 
-            <h3>Why This Works</h3>
-            <div class="why-works">
-                <p><strong>Feasibility:</strong> Each activity takes 5-15 minutes. No lesson plans to rewrite. No supplies to buy. They fit into existing class time as warm-ups, transitions, or reflections.</p>
-                
-                <p><strong>Equity:</strong> These activities require nothing more than paper and a pen. Every student can participate regardless of resources at home or school budget constraints.</p>
-                
-                <p><strong>Integration:</strong> Creativity isn't separate from content. These activities reinforce what you're already teaching while building divergent thinking, problem-solving, and student voice.</p>
-            </div>
-        </div>
-    </section>
+    <!-- TEACHERS PAGE -->
+    <div id="teachers" class="page">
+        <section>
+            <div class="container">
+                <h2>For Teachers</h2>
+                <p class="section-subtitle">Embed creativity into what you're already teaching</p>
 
-    <section id="why">
-        <div class="container">
-            <h2>Why It Works</h2>
-            <div class="intro-text">
-                <p>Creativity isn't about adding more to an already packed schedule. It's about making space for students to think differently within the time you already have. These activities are designed to be embedded, not extra.</p>
-                
-                <p>They work because they're short, accessible, and tied to real learning. No special training. No expensive materials. Just small opportunities for students to explore ideas in ways that standardized tests don't reward but real life does.</p>
-                
-                <p>When students practice creative thinking regularly—even in small doses—they build flexibility, curiosity, and confidence. Those skills transfer to every subject and every challenge they'll face.</p>
+                <div class="teacher-intro">
+                    <p>Student creativity has dropped steadily over the past few decades. More testing, tighter schedules, and fewer opportunities for open-ended exploration have squeezed out creative thinking.</p>
+                    
+                    <p>But creativity isn't extra. It builds problem-solving, critical thinking, and resilience. These activities fit into your existing curriculum—no new courses, no budget required. Use them as warm-ups, transitions, or brain breaks.</p>
+                </div>
+
+                <h3 style="text-align: center; font-size: 2.2rem; margin-bottom: 40px;">Classroom-Ready Activities</h3>
+
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <h4>One-Minute Sketch</h4>
+                        <p class="activity-meta">📚 Any subject | ⏱ 5 minutes</p>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">Students visualize a concept from the lesson (photosynthesis, a math problem, a historical event) and sketch it in 60 seconds, then explain their choices to a partner.</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4>Question Chain</h4>
+                        <p class="activity-meta">📚 Science, Social Studies, English | ⏱ 8 minutes</p>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">Start with a topic from your lesson and have students generate five questions about it, with each question building on the previous one.</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4>Reverse Engineering</h4>
+                        <p class="activity-meta">📚 Math, Science, History | ⏱ 10 minutes</p>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">Give students the answer or outcome and ask them to work backwards to figure out the question, process, or context that led to it.</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4>Three-Word Summary</h4>
+                        <p class="activity-meta">📚 Any subject | ⏱ 5 minutes</p>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">After a lesson or reading, students distill the main idea into exactly three words, then share and compare with classmates.</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4>Metaphor Translation</h4>
+                        <p class="activity-meta">📚 Science, Math, English | ⏱ 12 minutes</p>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">Students explain a concept from class using a metaphor from a completely unrelated domain (explain photosynthesis as a city, describe a math equation as a recipe).</p>
+                    </div>
+                </div>
+
+                <h3 style="text-align: center; font-size: 2.2rem; margin: 80px 0 40px;">Why This Approach Works</h3>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h4>Feasible</h4>
+                        <p>Each activity takes 5-15 minutes. No lesson plans to rewrite. No supplies to buy. They fit seamlessly into existing class time.</p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🌍</div>
+                        <h4>Equitable</h4>
+                        <p>These activities require nothing more than paper and a pen. Every student can participate regardless of resources.</p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎯</div>
+                        <h4>Integrated</h4>
+                        <p>Creativity reinforces content. These activities build divergent thinking while strengthening what you're already teaching.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
+    <!-- WHY IT WORKS PAGE -->
+    <div id="why" class="page">
+        <section>
+            <div class="container">
+                <h2>Why It Works</h2>
+                <p class="section-subtitle">Small moments, big impact</p>
+
+                <div class="why-hero">
+                    <h3>Creativity isn't extra</h3>
+                    <p>It's not about adding more to an already packed schedule. These activities make space for students to think differently within the time you already have. They're designed to be embedded, not extra.</p>
+                </div>
+
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <div class="principle-number">1</div>
+                        <h4>Regular Practice Builds Skills</h4>
+                        <p>When students practice creative thinking regularly—even in small doses—they build flexibility, curiosity, and confidence. These aren't soft skills. They're essential for problem-solving in every subject and real-world challenge.</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <div class="principle-number">2</div>
+                        <h4>Low Stakes, High Value</h4>
+                        <p>These activities work because they're short, accessible, and tied to real learning. No special training required. No expensive materials. Just opportunities to explore ideas in ways that standardized tests don't measure but that matter deeply.</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <div class="principle-number">3</div>
+                        <h4>Transfer Beyond the Classroom</h4>
+                        <p>Creative thinking skills transfer across disciplines and into life. Students who regularly engage with open-ended problems become better at adapting, innovating, and approaching challenges from multiple angles.</p>
+                    </div>
+                </div>
+
+                <div class="intro-box" style="margin-top: 60px;">
+                    <p style="font-size: 1.2rem; text-align: center; margin: 0;">
+                        <strong>The goal isn't to create artists.</strong> It's to help every student become a more flexible, curious, and confident thinker—no matter what path they choose.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <footer>
         <p>Created as part of a student civic engagement project.</p>
     </footer>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
